@@ -29,4 +29,10 @@ describe('OrderTotal', () => {
   it('add tax to the subtotal', () => {
     expect(service.total(100)).toBe(105);
   });
+
+  //Verify the interaction with a spy
+  it('calls the tax calculator', () => {
+    service.total(100);
+    expect(taxCalculatorStub.calculate).toHaveBeenCalled();
+  });
 });
